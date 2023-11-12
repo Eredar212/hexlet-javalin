@@ -16,6 +16,9 @@ public class HelloWorld {
             String name = ctx.queryParam("name");
             ctx.result(String.format("Hello, %s!", name == null ? "World" : name));
         });
+        app.get("/users/{id}/post/{postId}", ctx -> {
+            ctx.result(String.format("User Id: %s\nPost Id: %s", ctx.pathParam("id"), ctx.pathParam("postId")));
+        });
         app.start(7070); // Стартуем веб-сервер
     }
 }
